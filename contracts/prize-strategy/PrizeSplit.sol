@@ -38,6 +38,7 @@ abstract contract PrizeSplit is IPrizeSplit, Ownable {
         onlyOwner
     {
         uint256 newPrizeSplitsLength = _newPrizeSplits.length;
+        require(newPrizeSplitsLength <= type(uint8).max, "PrizeSplit/max-256-splits");
 
         // Add and/or update prize split configs using _newPrizeSplits PrizeSplitConfig structs array.
         for (uint256 index = 0; index < newPrizeSplitsLength; index++) {

@@ -31,12 +31,26 @@ describe('PrizeSplitStrategy', () => {
                 prizeSplit.setPrizeSplits([
                     {
                         target: AddressZero,
-                        percentage: 100,
-                        token: 0,
+                        percentage: 100
                     },
                 ]),
             ).to.be.revertedWith('PrizeSplit/invalid-prizesplit-target');
         });
+
+        it.only('should fail when setting more prize splits than possible', async () => {
+
+            const maxSplits = new Array(257)
+            for (let i = 0; i < maxSplits.length; i++) {
+                maxSplits[i] = {
+                    target: AddressZero,
+                    percentage: 100
+                }
+            }
+
+            await expect(
+                prizeSplit.setPrizeSplits(maxSplits)
+            ).to.be.revertedWith('PrizeSplit/max-256-splits')
+        })
 
         it('should revert when calling setPrizeSplits from a non-owner address', async () => {
             prizeSplit = prizeSplit.connect(wallet2);
