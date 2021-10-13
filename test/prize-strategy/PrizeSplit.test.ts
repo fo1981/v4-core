@@ -37,7 +37,7 @@ describe('PrizeSplitStrategy', () => {
             ).to.be.revertedWith('PrizeSplit/invalid-prizesplit-target');
         });
 
-        it.only('should fail when setting more prize splits than possible', async () => {
+        it('should fail when setting more prize splits than possible', async () => {
 
             const maxSplits = new Array(257)
             for (let i = 0; i < maxSplits.length; i++) {
