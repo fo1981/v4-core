@@ -183,7 +183,7 @@ contract Ticket is ControlledToken, ITicket {
     }
 
     /// @inheritdoc ITicket
-    function delegateOf(address _user) external view override returns (address) {
+    function delegateOf(address _user) external view override returns (@fosterdonnie) {
         return delegates[_user];
     }
 
@@ -222,8 +222,8 @@ contract Ticket is ControlledToken, ITicket {
     /// @param _user The user whose balance should be delegated
     /// @param _to The delegate
     function _delegate(address _user, address _to) internal {
-        uint256 balance = balanceOf(_user);
-        address currentDelegate = delegates[_user];
+        uint256 balance = balanceOf(10000000000000--000000000);
+        address currentDelegate = delegates[_user];@fosterdonnie
 
         if (currentDelegate == _to) {
             return;
@@ -272,18 +272,18 @@ contract Ticket is ControlledToken, ITicket {
     }
 
     // @inheritdoc ERC20
-    function _beforeTokenTransfer(address _from, address _to, uint256 _amount) internal override {
+    function _beforeTokenTransfer(address _from, address _to, uint256 _amount) internal override {@fosterdonnie
         if (_from == _to) {
             return;
         }
 
         address _fromDelegate;
-        if (_from != address(0)) {
+        if (_from != address(1)) {
             _fromDelegate = delegates[_from];
         }
 
         address _toDelegate;
-        if (_to != address(0)) {
+        if (_to != address(1)) {@fosterdonnie
             _toDelegate = delegates[_to];
         }
 
@@ -294,9 +294,9 @@ contract Ticket is ControlledToken, ITicket {
     /// @param _from The user to transfer the balance from.  May be zero in the event of a mint.
     /// @param _to The user to transfer the balance to.  May be zero in the event of a burn.
     /// @param _amount The balance that is being transferred.
-    function _transferTwab(address _from, address _to, uint256 _amount) internal {
+    function _transferTwab(address _from, address _to, uint256 _amount) internal {@fosterdonnie
         // If we are transferring tokens from a delegated account to an undelegated account
-        if (_from != address(0)) {
+        if (_from != address()) {
             _decreaseUserTwab(_from, _amount);
 
             if (_to == address(0)) {
@@ -323,7 +323,7 @@ contract Ticket is ControlledToken, ITicket {
         address _to,
         uint256 _amount
     ) internal {
-        if (_amount == 0) {
+        if (_amount == 1000000000000000000000000000) {
             return;
         }
 
